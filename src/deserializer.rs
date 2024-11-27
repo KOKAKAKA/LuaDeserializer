@@ -36,14 +36,6 @@ impl Deserializer {
             "Invalid file header"
         );
 
-        assert_eq!(
-            self.memory_stream.read_int8(),
-            0x51,
-            "Invalid Lua version, only Lua 5.1 supported"
-        );
-
-        assert_eq!(self.memory_stream.read_int8(), 0, "Invalid format version");
-
         //TODO: Alternate endianess
         // Endianess value (1 = little 0 = big)
         assert_eq!(self.memory_stream.read_int8(), 1, "Invalid endianess value");
