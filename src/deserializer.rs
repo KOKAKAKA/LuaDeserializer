@@ -36,10 +36,6 @@ impl Deserializer {
             "Invalid file header"
         );
 
-        //TODO: Alternate endianess
-        // Endianess value (1 = little 0 = big)
-        assert_eq!(self.memory_stream.read_int8(), 1, "Invalid endianess value");
-
         self.memory_stream.int_size = self.memory_stream.read_int8();
         assert!(
             self.memory_stream.int_size == 4 || self.memory_stream.int_size == 8,
